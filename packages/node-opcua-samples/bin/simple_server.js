@@ -164,6 +164,22 @@ server.on("post_initialize", function () {
 
     const myDevices = namespace.addFolder(rootFolder.objects, {browseName: "MyDevices"});
 
+    // MindSphere Variables
+    const mindVar = namespace.addVariable({
+        organizedBy: myDevices,
+        browseName: "ArmState",
+        nodeId: "ns=1;s=ArmState",
+        dataType: "Integer",
+        value: new Variant({dataType: DataType.Int32, value: 500})
+    });
+
+    setInterval(function () {
+        var statesArray = [500, 500, 500, 500, 500, 601, 602, 603, 604, 605]
+        var index = Math.round(Math.random() * (statesArray.length - 1));
+        const currentState = statesArray[index]
+        mindVar.setValueFromSource(new Variant({dataType: DataType.Int32, value: currentState}));
+    }, 10);
+
 
     /*
      * variation 0:
