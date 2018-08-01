@@ -187,11 +187,11 @@ server.on("post_initialize", function () {
         armStateTag.setValueFromSource(new Variant({dataType: DataType.Int32, value: currentState}));
     }, 1000);
 
-    // 
-    const variable0 = namespace.addVariable({
+    // Axis 0
+    const axis0Tag = namespace.addVariable({
         organizedBy: myDevices,
-        browseName: "FanSpeed",
-        nodeId: "ns=1;s=FanSpeed",
+        browseName: "Axis0Tag",
+        nodeId: "ns=1;s=Axis1Tag",
         dataType: "Double",
         value: new Variant({dataType: DataType.Double, value: 1000.0})
     });
