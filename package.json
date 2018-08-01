@@ -27,7 +27,7 @@
     "ncu": "ncu -au && node  ./node_modules/lerna/bin/lerna.js exec ncu -- -au",
     "prettier-watch": "onchange \"packages/*/(src|test|source)/**/*.(js|ts)\" -v -p -- prettier --write {{changed}}",
     "lebab-let": "node  ./node_modules/lerna/bin/lerna.js exec lebab  --replace index.js  --transform let && node  ./node_modules/lerna/bin/lerna.js exec lebab  --replace test  --transform let && node  ./node_modules/lerna/bin/lerna.js exec lebab  --replace src  --transform let",
-    ""
+    "start": "node packages/node-opcua-samples/bin/simple_server"
   },
   "repository": {
     "type": "git",

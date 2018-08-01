@@ -165,6 +165,7 @@ server.on("post_initialize", function () {
     const myDevices = namespace.addFolder(rootFolder.objects, {browseName: "MyDevices"});
 
     // MindSphere Variables
+    // Arm simulator ----------------------------------------------------------------------------------------
     var armState = 500
 
     // Arm State
@@ -188,19 +189,106 @@ server.on("post_initialize", function () {
     }, 1000);
 
     // Axis 0
-    const axis0Tag = namespace.addVariable({
+    const axis0AlphaTag = namespace.addVariable({
         organizedBy: myDevices,
-        browseName: "Axis0Tag",
-        nodeId: "ns=1;s=Axis1Tag",
+        browseName: "axis0AlphaTag",
+        nodeId: "ns=1;s=axis0AlphaTag",
         dataType: "Double",
-        value: new Variant({dataType: DataType.Double, value: 1000.0})
+        value: new Variant({dataType: DataType.Double, value: 0})
     });
 
     setInterval(function () {
-        const fluctuation = Math.random() * 100 - 50;
-        variable0.setValueFromSource(new Variant({dataType: DataType.Double, value: 1000.0 + fluctuation}));
+        if (armState != 500) {
+            return
+        }
+        const currentAngle = Math.random() * 360;
+        axis0AlphaTag.setValueFromSource(new Variant({dataType: DataType.Double, value: currentAngle}));
     }, 10);
 
+    // Axis 1
+    const axis1AlphaTag = namespace.addVariable({
+        organizedBy: myDevices,
+        browseName: "axis1AlphaTag",
+        nodeId: "ns=1;s=axis1AlphaTag",
+        dataType: "Double",
+        value: new Variant({dataType: DataType.Double, value: 0})
+    });
+
+    setInterval(function () {
+        if (armState != 500) {
+            return
+        }
+        const currentAngle = Math.random() * 360;
+        axis1AlphaTag.setValueFromSource(new Variant({dataType: DataType.Double, value: currentAngle}));
+    }, 10);
+
+    // Axis 2
+    const axis2AlphaTag = namespace.addVariable({
+        organizedBy: myDevices,
+        browseName: "axis2AlphaTag",
+        nodeId: "ns=1;s=axis2AlphaTag",
+        dataType: "Double",
+        value: new Variant({dataType: DataType.Double, value: 0})
+    });
+
+    setInterval(function () {
+        if (armState != 500) {
+            return
+        }
+        const currentAngle = Math.random() * 360;
+        axis2AlphaTag.setValueFromSource(new Variant({dataType: DataType.Double, value: currentAngle}));
+    }, 10);
+
+    // Axis 3
+    const axis3AlphaTag = namespace.addVariable({
+        organizedBy: myDevices,
+        browseName: "axis3AlphaTag",
+        nodeId: "ns=1;s=axis3AlphaTag",
+        dataType: "Double",
+        value: new Variant({dataType: DataType.Double, value: 0})
+    });
+
+    setInterval(function () {
+        if (armState != 500) {
+            return
+        }
+        const currentAngle = Math.random() * 360;
+        axis3AlphaTag.setValueFromSource(new Variant({dataType: DataType.Double, value: currentAngle}));
+    }, 10);
+
+    // Axis 4
+    const axis4AlphaTag = namespace.addVariable({
+        organizedBy: myDevices,
+        browseName: "axis4AlphaTag",
+        nodeId: "ns=1;s=axis4AlphaTag",
+        dataType: "Double",
+        value: new Variant({dataType: DataType.Double, value: 0})
+    });
+
+    setInterval(function () {
+        if (armState != 500) {
+            return
+        }
+        const currentAngle = Math.random() * 360;
+        axis4AlphaTag.setValueFromSource(new Variant({dataType: DataType.Double, value: currentAngle}));
+    }, 10);
+
+    // Axis 5
+    const axis5AlphaTag = namespace.addVariable({
+        organizedBy: myDevices,
+        browseName: "axis5AlphaTag",
+        nodeId: "ns=1;s=axis5AlphaTag",
+        dataType: "Double",
+        value: new Variant({dataType: DataType.Double, value: 0})
+    });
+
+    setInterval(function () {
+        if (armState != 500) {
+            return
+        }
+        const currentAngle = Math.random() * 360;
+        axis5AlphaTag.setValueFromSource(new Variant({dataType: DataType.Double, value: currentAngle}));
+    }, 10);
 
     /*
      * variation 0:
