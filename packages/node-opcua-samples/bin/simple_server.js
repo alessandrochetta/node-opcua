@@ -165,19 +165,40 @@ server.on("post_initialize", function () {
     const myDevices = namespace.addFolder(rootFolder.objects, {browseName: "MyDevices"});
 
     // MindSphere Variables
-    const mindVar = namespace.addVariable({
+    var armState = 500
+
+    // Arm State
+    const armStateTag = namespace.addVariable({
         organizedBy: myDevices,
         browseName: "ArmState",
         nodeId: "ns=1;s=ArmState",
         dataType: "Integer",
-        value: new Variant({dataType: DataType.Int32, value: 500})
+        value: new Variant({dataType: DataType.Int32, value: armState})
     });
 
     setInterval(function () {
-        var statesArray = [500, 500, 500, 500, 500, 601, 602, 603, 604, 605]
+        if (Math.random() > 0.1) {
+            return
+        }
+        var statesArray = [500, 500, 500, 500, 500, 500, 500, 500, 500, 500, 500, 500, 500, 601, 601, 601, 601, 601, 601, 601, 601, 602, 603, 604, 604, 605]
         var index = Math.round(Math.random() * (statesArray.length - 1));
         const currentState = statesArray[index]
-        mindVar.setValueFromSource(new Variant({dataType: DataType.Int32, value: currentState}));
+        armState = currentState
+        armStateTag.setValueFromSource(new Variant({dataType: DataType.Int32, value: currentState}));
+    }, 1000);
+
+    // 
+    const variable0 = namespace.addVariable({
+        organizedBy: myDevices,
+        browseName: "FanSpeed",
+        nodeId: "ns=1;s=FanSpeed",
+        dataType: "Double",
+        value: new Variant({dataType: DataType.Double, value: 1000.0})
+    });
+
+    setInterval(function () {
+        const fluctuation = Math.random() * 100 - 50;
+        variable0.setValueFromSource(new Variant({dataType: DataType.Double, value: 1000.0 + fluctuation}));
     }, 10);
 
 
